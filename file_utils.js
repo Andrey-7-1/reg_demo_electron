@@ -74,13 +74,26 @@ function clear_user_data()
         }
     );
     utf8_to_windows1251('data/users.csv');
+
+    // Reset json
+    let data = JSON.parse(fs.readFileSync('data/user_reg_options.json', "utf8"));
+    data["10"] = [];
+    data["5"] = {
+        "short": [
+            "ОАО «РЖД»"
+        ],
+        "full": [
+            "Открытое Акционерное Общество «Российские Железные Дороги»"
+        ]
+    }
+    fs.writeFileSync('data/user_reg_options.json', JSON.stringify(data, null, 4), "utf8");
 }
 
 function utf8_to_windows1251(filename) {
 
     let file = fs.readFileSync(filename, "utf8");
 
-    let filePath = path.dirname(filename) + '/' + path.basename(filename, path.extname(filename)) + '_win1251' + path.extname(filename);
+    let filePath = "data/users_win1251.csv";
 
     let Iconv  = require('iconv').Iconv;
     let iconv = new Iconv('UTF-8', 'WINDOWS-1251');

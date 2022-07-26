@@ -1,5 +1,6 @@
 const {app, Menu, dialog} = require('electron');
 const {download_user_data, clear_user_data} = require('./file_utils.js');
+const {utf8_to_windows1251} = require("./file_utils");
 
 const isMac = process.platform === 'darwin'
 let menuTemplate = [
@@ -38,6 +39,7 @@ let menuTemplate = [
                 {
                     label: 'Скачать данные (Windows1251)',
                     click() {
+                        utf8_to_windows1251('data/users.csv');
                         download_user_data(encoding='win1251');
                         dialog.showMessageBox({
                             type: 'info',
