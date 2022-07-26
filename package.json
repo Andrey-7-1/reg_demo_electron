@@ -1,5 +1,5 @@
 {
-  "name": "regdemo-electron-test",
+  "name": "regdemo-electron",
   "version": "1.0.0",
   "description": "App for registration form demo",
   "main": "main.js",
@@ -13,5 +13,8 @@
   },
   "dependencies": {
     "iconv": "^3.0.1"
+  },
+  "build": {
+    "productName": "RegDemo"
   }
 }
