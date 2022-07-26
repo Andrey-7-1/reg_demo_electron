@@ -1,0 +1,16 @@
+{
+  "name": "regdemo-electron-test",
+  "version": "1.0.0",
+  "description": "App for registration form demo",
+  "main": "main.js",
+  "author": "Andrey71",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^19.0.9"
+  },
+  "dependencies": {
+  }
+}

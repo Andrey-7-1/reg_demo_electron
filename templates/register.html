@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+
+    <!-- Bootstrap CSS & JS -->
+    <link href="../static/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="../static/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Tailwind CSS (Unused but somehow makes it look better) -->
+    <link href="../static/css/tailwind.css" rel="stylesheet">
+
+    <!-- Page specific CSS and JS -->
+    <link rel="stylesheet" href="../static/css/register.css">
+    <script src="../static/js/register.js"></script>
+</head>
+<body>
+
+    <h1 style="text-align: center">РЕГИСТРАЦИОННАЯ ФОРМА</h1>
+    <br>
+    <form action="" method="post" id="form">
+
+    <!-- Company information -->
+    <div class="section-title-box"><h1 class="section-title">Укажите вашу организацию</h1></div>
+    <div class="box">
+        <div class="question-box-small">
+            <label for="rzd_checkbox">Вы сотрудник ОАО "РЖД"? </label>
+            <input class="form-check-input" type="checkbox" value="" id="rzd_checkbox" onclick="org_switch(this)">
+        </div>
+    </div>
+    <div class="box">
+        <div class="question-box-big">
+            <label for="org-short">Название организации (краткое)</label>
+            <input class="form-control org" id="org-short" list="org_options_short" name="org_name_short" placeholder="Введите название" required type="text" value="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="question-box-big">
+            <label for="org-full">Название организации (полное)</label>
+            <input class="form-control org" id="org-full" list="org_options_full" name="org_name_full" placeholder="Введите название" required type="text" value="">
+        </div>
+    </div>
+    <datalist id="org_options_short">
+    </datalist>
+    <datalist id="org_options_full">
+    </datalist>
+
+
+    <div class="box">
+        <div class="question-box-small input-group">
+            <span class="input-group-text"><label for="division_name_type">Тип подразделения</label></span>
+            <input class="answer-box-small form-control" list="dn_options_type" id="division_name_type" onkeyup="set_div_name_list()" onInput="set_div_name_list()">
+
+            <datalist id="dn_options_type">
+            </datalist>
+        </div>
+    </div>
+    <div class="box">
+        <div class="question-box-big">
+            <label for="division-name-select">Укажите ваше подразделения</label>
+            <input class="form-control" disabled id="division-name-select" list="" name="division_name" placeholder="Заполните поле вверху" required type="text" value="">
+
+
+            <datalist id="dn_options-Аппарат_управления">
+            </datalist>
+
+            <datalist id="dn_options-Структурное_подразделение">
+            </datalist>
+
+            <datalist id="dn_options-Филиал">
+            </datalist>
+        </div>
+    </div>
+
+
+    <div class="section-title-box"><h1 class="section-title">Укажите полное наименование должности (по-пунктно)</h1></div>
+    <div class="box">
+        <div class="question-box-small">
+            <label for="position_level">Ваш должностной уровень</label>
+            <select class="form-control" id="position_level" name="position_level" required>
+                <option value="Руководитель">Руководитель</option>
+                <option value="Специалист">Специалист</option>
+            </select>
+        </div>
+    </div>
+    <div class="box">
+        <div class="question-box-big">
+            <label for="position-type-select">Укажите тип должности</label>
+            <input class="form-control" id="position-type-select" list="pt_options" name="position_type" placeholder="Начните вводить название или выберите из перечня" required type="text" value="">
+
+            <datalist id="pt_options">
+            </datalist>
+        </div>
+    </div>
+    <h6 style="text-align: center">+</h6>
+    <div class="box">
+        <div class="question-box-big">
+            <label for="division-type-select">Укажите к какому типу подразделения относится ваша должность</label>
+            <input class="form-control" id="division-type-select" list="dt_options" name="division_type" placeholder="Начните вводить название или выберите из перечня" required type="text" value="">
+
+            <datalist id="dt_options">
+            </datalist>
+        </div>
+    </div>
+    <h6 style="text-align: center">+</h6>
+    <div class="box">
+        <div class="question-box-big">
+            <label for="division_type_name">Введите наименование указанного выше подразделения</label>
+            <input class="form-control" id="division_type_name" list="dtn_options" name="division_type_name" placeholder="Введите название" required type="text" value="">
+
+            <datalist id="dtn_options">
+            </datalist>
+        </div>
+    </div>
+    <h6 style="text-align: center">=</h6>
+    <div class="box">
+        <div class="result-box">
+            <p>Ваша должность:</p>
+            <p id="position_result" class="result-text">Появится по мере заполнения</p>
+        </div>
+    </div>
+
+
+    <!-- Personal information -->
+    <div class="section-title-box"><h1 class="section-title">ФИО</h1></div>
+    <div class="box">
+        <div class="question-box-small input-group">
+            <span class="input-group-text"><label for="surname">Фамилия</label></span>
+            <input class="form-control answer-box-small" id="surname" name="surname" placeholder="Введите вашу фамилию" required type="text" value="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="question-box-small input-group">
+            <span class="input-group-text"><label for="name">Имя</label></span>
+            <input class="form-control answer-box-small" id="name" name="name" placeholder="Введите ваше имя" required type="text" value="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="question-box-small input-group">
+            <span class="input-group-text"><label for="patronymic">Отчество</label></span>
+            <input class="form-control answer-box-small" id="patronymic" name="patronymic" placeholder="Введите ваше отчество" required type="text" value="">
+        </div>
+    </div>
+
+    <!-- Contact information -->
+    <div class="section-title-box"><h1 class="section-title">Контактные данные</h1></div>
+    <div class="box">
+        <div class="question-box-small input-group">
+            <span class="input-group-text"><label for="phone">Рабочий телефон</label></span>
+            <input class="form-control answer-box-small" id="phone" name="phone" placeholder="+7 (000) 000-00-00" required type="tel" value="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="question-box-small input-group">
+            <span class="input-group-text"><label for="email">E-mail (рабочий)</label></span>
+            <input class="form-control answer-box-small" id="email" name="email" placeholder="Введите ваш email" required type="email" value="">
+        </div>
+    </div>
+    <div class="box">
+        <input class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded" id="submit" name="submit" type="submit" value="Зарегистрироваться">
+    </div>
+    </form>
+
+    <br>
+    <button class="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded" id="download-button">Скачать данные</button>
+    <script type="module" src="../static/js/formHandler.js"></script>
+</body>
+</html>
