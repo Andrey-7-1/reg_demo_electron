@@ -12,5 +12,8 @@
     "electron": "^19.0.9"
   },
   "dependencies": {
+    "@vk-x/cp1251": "^2.0.4",
+    "iconv": "^3.0.1",
+    "windows-1251": "^3.0.4"
   }
 }

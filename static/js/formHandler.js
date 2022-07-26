@@ -37,11 +37,3 @@ document.getElementById('form').addEventListener('submit', function(e)
         alert("Форма отправлена");
     }
 )
-
-// When asked to download file do that
-document.getElementById('download-button').addEventListener('click', function(e)
-{
-    e.preventDefault();
-    ipcRenderer.send('download', 'ping');
-    alert("Файл скачан в папку загрузки");
-});
