@@ -1,13 +1,9 @@
 window.addEventListener('DOMContentLoaded', () => {
     // Open ../../data/user_reg_options.json
     // And set it's contents to "data" variable
-    const get_user_reg_options = () => {
-        const xhr = new XMLHttpRequest()
-        xhr.open('GET', '../data/user_reg_options.json', false)
-        xhr.send(null)
-        return JSON.parse(xhr.responseText)
-    }
-    let data = get_user_reg_options()
+    let fs = require('fs');
+    let data = JSON.parse(fs.readFileSync('data/user_reg_options.json', "utf8"));
+    console.log(data);
 
     let org_full_datalist = data['5']['full'];
     for (let i = 0; i < org_full_datalist.length; i++)
