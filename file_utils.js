@@ -9,10 +9,12 @@ function save_to_csv(filename, data)
         csv += data[i] + ";";
     }
     csv += "\n";
-    fs.appendFile(filename, csv, function(err)
+
+    fs.appendFileSync(filename, csv, function(err)
     {
         if (err) throw err;
     });
+    utf8_to_windows1251('data/users.csv');
 }
 
 
@@ -84,11 +86,7 @@ function clear_user_data()
 {
     let file = 'data/empty_users.csv';
     let filePath = 'data/users.csv';
-    fs.copyFile(file, filePath, (err) => {
-            if (err) throw err;
-            console.log('File emptied successfully');
-        }
-    );
+    fs.copyFileSync(file, filePath);
     utf8_to_windows1251('data/users.csv');
 
     // Reset json
@@ -108,7 +106,8 @@ function clear_user_data()
     BrowserWindow.getFocusedWindow().reload();
 }
 
-function utf8_to_windows1251(filename) {
+function utf8_to_windows1251(filename)
+{
 
     let file = fs.readFileSync(filename, "utf8");
 

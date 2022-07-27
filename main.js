@@ -24,9 +24,8 @@ const createWindow = () => {
 // Save form data
 ipcMain.on('submitForm', function(event, data) {
     // Save data
-    const {save_to_csv, update_orgs, update_division_type_name, utf8_to_windows1251} = require('./file_utils.js');
+    const {save_to_csv, update_orgs, update_division_type_name} = require('./file_utils.js');
     save_to_csv('data/users.csv', data);
-    utf8_to_windows1251('data/users.csv');
     update_orgs('data/user_reg_options.json', data[0], data[1]);
     update_division_type_name('data/user_reg_options.json', data[6]);
 
