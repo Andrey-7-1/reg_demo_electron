@@ -27,12 +27,6 @@ let menuTemplate = [
                     label: 'Скачать данные (UTF8)',
                     click() {
                         download_user_data();
-                        dialog.showMessageBox({
-                            type: 'info',
-                            title: 'Скачивание данных',
-                            message: 'Данные скачаны в папку загрузки',
-                            buttons: ['OK']
-                        });
                     }
                 },
 
@@ -41,12 +35,6 @@ let menuTemplate = [
                     click() {
                         utf8_to_windows1251('data/users.csv');
                         download_user_data(encoding='win1251');
-                        dialog.showMessageBox({
-                            type: 'info',
-                            title: 'Скачивание данных',
-                            message: 'Данные скачаны в папку загрузки',
-                            buttons: ['OK']
-                        });
                     }
                 },
 

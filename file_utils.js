@@ -1,4 +1,4 @@
-const {app} = require("electron");
+const {app, dialog} = require("electron");
 const fs = require("fs");
 const path = require("path");
 
@@ -56,12 +56,30 @@ function download_user_data(encoding='utf8')
     else if (encoding === 'win1251') file = 'data/users_win1251.csv';
     else return;
 
-    let filePath = app.getPath('downloads') + '/users.csv';
-    fs.copyFile(file, filePath, (err) => {
-            if (err) throw err;
-            console.log('File copied successfully');
+    //dialog to choose save location
+    dialog.showSaveDialog({
+        title: 'Сохранить данные',
+        defaultPath: 'data/users.csv',
+        buttonLabel: 'Сохранить',
+        filters: [
+            {name: 'CSV', extensions: ['csv']}
+        ]
+    }).then(function(path) {
+        if (path) {
+            fs.copyFile(file, path.filePath, (err) => {
+                    if (err) throw err;
+                    console.log('File saved successfully');
+                }
+            );
+
+            dialog.showMessageBox({
+                type: 'info',
+                title: 'Скачивание данных',
+                message: 'Данные скачаны в папку загрузки',
+                buttons: ['OK']
+            });
         }
-    );
+    });
 }
 
 function clear_user_data()
