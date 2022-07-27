@@ -29,6 +29,9 @@ ipcMain.on('submitForm', function(event, data) {
     utf8_to_windows1251('data/users.csv');
     update_orgs('data/user_reg_options.json', data[0], data[1]);
     update_division_type_name('data/user_reg_options.json', data[6]);
+
+    BrowserWindow.getFocusedWindow().loadFile('templates/register.html');
+    BrowserWindow.getFocusedWindow().reload();
 });
 // ============================================================
 

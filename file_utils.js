@@ -1,7 +1,5 @@
-const {app, dialog} = require("electron");
+const {dialog, BrowserWindow} = require("electron");
 const fs = require("fs");
-const path = require("path");
-
 
 function save_to_csv(filename, data)
 {
@@ -105,6 +103,9 @@ function clear_user_data()
         ]
     }
     fs.writeFileSync('data/user_reg_options.json', JSON.stringify(data, null, 4), "utf8");
+
+    BrowserWindow.getFocusedWindow().loadFile('templates/register.html');
+    BrowserWindow.getFocusedWindow().reload();
 }
 
 function utf8_to_windows1251(filename) {

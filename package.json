@@ -6,7 +6,9 @@
   "author": "Andrey71",
   "license": "MIT",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build_mac": "electron-builder --mac",
+    "build_win": "electron-builder --win"
   },
   "devDependencies": {
     "electron": "^19.0.9"
@@ -15,18 +17,6 @@
     "iconv": "^3.0.1"
   },
   "build": {
-    "productName": "RegDemo",
-    "win": {
-      "arch": "ia32",
-      "target": "portable",
-      "files": [
-        "./main.js",
-        "./package.json",
-        "./main_menu.js",
-        "./file_utils.js",
-        "./data/**/*",
-        "./templates/**/*",
-        "./static/**/*"]
-    }
+    "productName": "RegDemo"
   }
 }
