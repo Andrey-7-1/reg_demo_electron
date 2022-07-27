@@ -15,6 +15,18 @@
     "iconv": "^3.0.1"
   },
   "build": {
-    "productName": "RegDemo"
+    "productName": "RegDemo",
+    "win": {
+      "arch": "ia32",
+      "target": "portable",
+      "files": [
+        "./main.js",
+        "./package.json",
+        "./main_menu.js",
+        "./file_utils.js",
+        "./data/**/*",
+        "./templates/**/*",
+        "./static/**/*"]
+    }
   }
 }
