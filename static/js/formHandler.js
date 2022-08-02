@@ -10,8 +10,8 @@ document.getElementById('form').addEventListener('submit', function(e)
 
         // For every field in register.js form add it's value
         let formData = [
-            document.getElementById('org-full').value,
             document.getElementById('org-short').value,
+            document.getElementById('org-full').value,
             document.getElementById('division-name-select').value,
             document.getElementById('position_level').value,
             document.getElementById('position-type-select').value,
